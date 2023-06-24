@@ -8,18 +8,15 @@
   },
   [
     {
+      "x": 2.5,
       "a": 7,
-      "w": 2.75
-    },
-    "Volume Scroller",
-    {
       "fa": [
         5
       ]
     },
     "<i class='kb kb-Multimedia-Mute-1'></i>",
     {
-      "x": 0.5
+      "x": 0.75
     },
     "",
     {
@@ -72,45 +69,18 @@
     {
       "f": 3
     },
-    "F24",
-    {
-      "x": 0.25,
-      "t": "#ff0000\n#000000",
-      "a": 5,
-      "f2": 1,
-      "d": true
-    },
-    "<i class='fa fa-circle'></i>\nNUM LOCK",
-    {
-      "t": "#800000\n#000000",
-      "d": true
-    },
-    "<i class='fa fa-circle'></i>\nCAPS LOCK",
-    {
-      "d": true
-    },
-    "<i class='fa fa-circle'></i>\nSCROLL LOCK"
+    "F24"
   ],
   [
     {
-      "t": "#000000",
-      "a": 7,
-      "w": 1.25
+      "x": 0.5,
+      "f": 3
     },
     "<i class='kb kb-Multimedia-Rewind-Start'></i>",
-    {
-      "fa": [
-        5
-      ],
-      "w": 1.25
-    },
     "<i class='kb kb-Multimedia-Play-Pause'></i>",
-    {
-      "w": 1.25
-    },
     "<i class='kb kb-Multimedia-FastForward-End'></i>",
     {
-      "x": 0.5,
+      "x": 0.75,
       "f": 3
     },
     "Esc",
