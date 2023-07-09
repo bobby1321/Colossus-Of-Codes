@@ -451,7 +451,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "keyboard_mk1.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
