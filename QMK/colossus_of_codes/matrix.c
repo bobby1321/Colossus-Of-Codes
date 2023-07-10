@@ -19,13 +19,14 @@ extern matrix_row_t raw_matrix[MATRIX_COLS];  // raw values
 static matrix_row_t read_rows(void);
 static void         select_col(uint8_t row);
 
-static uint8_t pca9555_reset_loop;
+static uint8_t pca9555_reset_loop = 0;
 
 void matrix_init_custom(void) {
     // initialize row and col
 
     pca9555_status = init_pca9555();
 }
+
 
 // Reads and stores a row, returning
 // whether a change occurred.
@@ -39,6 +40,7 @@ static inline bool store_raw_matrix_col(uint8_t index) {
 }
 
 bool matrix_scan_custom(matrix_row_t current_matrix[]) {
+	print("starting scan\n");
     if (pca9555_status) {  // if there was an error
         if (++pca9555_reset_loop == 0) {
             print("trying to reset pca9555\n");
@@ -55,7 +57,7 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
     for (uint8_t i = 0; i < MATRIX_COLS; i++) {
         uint8_t col_index  = i;
         select_col(col_index);
-
+		
         changed |= store_raw_matrix_col(col_index);
 
     }
@@ -76,16 +78,13 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
  */
 
 static matrix_row_t read_rows() {
-    
+    print("reading rows........\n");
 	if (pca9555_status) {  // if there was an error
 		return 0;
 	} else {
 		uint8_t data = 0;
-		pca9555_status = i2c_start(I2C0_ADDR_READ, PCA_I2C_TIMEOUT);    if (pca9555_status) goto out;
-		pca9555_status = i2c_write(INPUTB, PCA_I2C_TIMEOUT);			if (pca9555_status) goto out;
-		pca9555_status = i2c_read_nack(PCA_I2C_TIMEOUT);               	if (pca9555_status < 0) goto out;
-		data            = ~((uint8_t)pca9555_status);
-		pca9555_status = I2C_STATUS_SUCCESS;
+		//pca9555_status = i2c_start(I2C0_ADDR_READ);    if (pca9555_status) goto out;
+		pca9555_status = i2c_readReg(I2C0_ADDR, INPUTB, &data, 1, PCA_I2C_TIMEOUT);               	if (pca9555_status < 0) goto out;
 	out:
 		i2c_stop();
 		return data;
@@ -96,24 +95,27 @@ static void select_col(uint8_t col) {
 
 	// select on pca9555
 	if (!pca9555_status) {
+		uprintf("col %d\n", col);
 		if (col < 8) {
-			pca9555_status = i2c_start(I2C1_ADDR_WRITE, PCA_I2C_TIMEOUT);        if (pca9555_status) goto out;
-			pca9555_status = i2c_write(OUTPUTA, PCA_I2C_TIMEOUT);                 if (pca9555_status) goto out;
-			pca9555_status = i2c_write(0x00 & (1 << (8-col)), PCA_I2C_TIMEOUT);    if (pca9555_status) goto out;
+			//pca9555_status = i2c_start(I2C1_ADDR_WRITE);        if (pca9555_status) goto out;
+			uint8_t temp_data = 0x00 & (1 << (8-col));
+    		pca9555_status = i2c_writeReg(I2C1_ADDR, OUTPUTA, &temp_data, 1, PCA_I2C_TIMEOUT); if (pca9555_status) goto out;
 		} else if (col >=8 && col < 16) {
-			pca9555_status = i2c_start(I2C0_ADDR_WRITE, PCA_I2C_TIMEOUT);        if (pca9555_status) goto out;
-			pca9555_status = i2c_write(OUTPUTB, PCA_I2C_TIMEOUT);                 if (pca9555_status) goto out;
-			pca9555_status = i2c_write(0x00 & (1 << (col)), PCA_I2C_TIMEOUT);    if (pca9555_status) goto out;
+			//pca9555_status = i2c_start(I2C0_ADDR_WRITE);        if (pca9555_status) goto out;
+			uint8_t temp_data = 0x00 & (1 << (col));
+    		pca9555_status = i2c_writeReg(I2C0_ADDR, OUTPUTB, &temp_data, 1, PCA_I2C_TIMEOUT); if (pca9555_status) goto out;
 		} else if (col >= 16) { 
-			pca9555_status = i2c_start(I2C0_ADDR_WRITE, PCA_I2C_TIMEOUT);        if (pca9555_status) goto out;
-			pca9555_status = i2c_write(OUTPUTA, PCA_I2C_TIMEOUT);                 if (pca9555_status) goto out;
-			pca9555_status = i2c_write(0x00 & (1 << (8-col)), PCA_I2C_TIMEOUT);    if (pca9555_status) goto out;
+			//pca9555_status = i2c_start(I2C0_ADDR_WRITE);        if (pca9555_status) goto out;
+			uint8_t temp_data = 0x00 & (1 << (8-col));
+    		pca9555_status = i2c_writeReg(I2C0_ADDR, OUTPUTA, &temp_data, 1, PCA_I2C_TIMEOUT); if (pca9555_status) goto out;
 		}
+		
 			
 	out:
+		if (pca9555_status) uprintf("Status1: %d\n",pca9555_status);
 		i2c_stop();
 	} else {
-		print('ahhhhhhhhhhhhhhh');
+		uprintf("Status2: %d\n",pca9555_status);
 	}
 }
 

@@ -7,15 +7,15 @@
     "features": {
         "bootmagic": true,
         "command": false,
-        "console": false,
+        "console": true,
         "extrakey": true,
         "mousekey": true,
         "nkro": true
     },
     "indicators": {
-        "caps_lock": "GP28",
+        "caps_lock": "GP29",
         "num_lock": "GP0",
-        "scroll_lock": "GP29"
+        "scroll_lock": "GP28"
     },
     "processor": "RP2040",
     "usb": {
