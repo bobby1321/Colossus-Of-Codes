@@ -11,6 +11,7 @@ bool         i2c_initialized = 0;
 i2c_status_t pca9555_status = 0x0; // using the same status for both since if one isn't working, odds are the other isn't as well
 
 void matrix_init_kb(void) {
+    wait_ms(3000);
     print("initing please work\n");
     pca9555_status = init_pca9555();
     matrix_init_user();
@@ -32,33 +33,41 @@ i2c_status_t init_pca9555(void) {
     // - unused  : input  : 1
     // - input   : input  : 1
     // - driving : output : 0
-    pca9555_status = i2c_start(I2C1_ADDR); // I2C1
 
-    uint8_t temp_data = 0b00000000;
+    //pca9555_status = i2c_start(I2C1_ADDR); // I2C1
+    //uint8_t data = 0;
+    //pca9555_status = i2c_readReg(I2C0_ADDR, INPUTB, &data, 1, PCA_I2C_TIMEOUT);
+    //uprintf("StatusAAA: %d, Value: %d\n",pca9555_status, data);
+    uint8_t temp_data = 0b00000000; //uint8_t stupid = IODIRA;
+    // pca9555_status = i2c_transmit(I2C1_ADDR, &stupid, 1, PCA_I2C_TIMEOUT);
+    // pca9555_status = i2c_transmit(I2C1_ADDR, &temp_data, 1, PCA_I2C_TIMEOUT);
+
+
     pca9555_status = i2c_writeReg(I2C1_ADDR, IODIRA, &temp_data, 1, PCA_I2C_TIMEOUT);
     if (pca9555_status) {
-        print("111111111111\n");
+        // print("111111111111\n");
+        //uprintf("Status111111111111: %d\n",pca9555_status);
         goto out;
     } 
     temp_data = 0b11111111;
     pca9555_status = i2c_writeReg(I2C1_ADDR, IODIRB, &temp_data, 1, PCA_I2C_TIMEOUT);
     if (pca9555_status) {
-        print("22222222222\n");
+        //print("22222222222\n");
         goto out;
     } 
 	
-    pca9555_status = i2c_start(I2C0_ADDR); // I2C0
+    //pca9555_status = i2c_start(I2C0_ADDR); // I2C0
 
     temp_data = 0b00000011;
     pca9555_status = i2c_writeReg(I2C0_ADDR, IODIRA, &temp_data, 1, PCA_I2C_TIMEOUT);
     if (pca9555_status) {
-        print("333333333333\n");
+        //print("333333333333\n");
         goto out;
     } 
     temp_data = 0b00000000;
     pca9555_status = i2c_writeReg(I2C0_ADDR, IODIRB, &temp_data, 1, PCA_I2C_TIMEOUT);
     if (pca9555_status) {
-        print("444444444444\n");
+        //print("444444444444\n");
         goto out;
     } 
     i2c_stop();

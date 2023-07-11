@@ -20,8 +20,8 @@
 //#define NO_ACTION_ONESHOT
 
 #define I2C_DRIVER I2CD1
-#define I2C0_SDA_PIN GP6
-#define I2C0_SCL_PIN GP7
+#define I2C1_SDA_PIN GP6
+#define I2C1_SCL_PIN GP7
 
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 22
