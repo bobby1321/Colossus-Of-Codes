@@ -51,6 +51,8 @@ i2c_status_t init_pca9555(void) {
     } 
     temp_data = 0b11111111;
     pca9555_status = i2c_writeReg(I2C1_ADDR, IODIRB, &temp_data, 1, PCA_I2C_TIMEOUT);
+    //temp_data = ~(temp_data);
+    //pca9555_status = i2c_writeReg(I2C1_ADDR, INVERTB, &temp_data, 1, PCA_I2C_TIMEOUT);
     if (pca9555_status) {
         //print("22222222222\n");
         goto out;
@@ -80,6 +82,6 @@ out:
 }
 
 void matrix_scan_kb(void) {
-    print("scanning??????\n");
+    //print("scanning??????\n");
     matrix_scan_user();
 }

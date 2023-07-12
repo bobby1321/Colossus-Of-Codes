@@ -3,7 +3,6 @@
     "keyboard_name": "colossus_of_codes",
     "maintainer": "bobby1321",
     "bootloader": "rp2040",
-    "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
         "command": false,
@@ -21,7 +20,7 @@
     "usb": {
         "device_version": "1.0.0",
         "pid": "0xC0C1",
-        "vid": "0x6969"
+        "vid": "0x1321"
     },
     "layouts": {
         "LAYOUT": {
