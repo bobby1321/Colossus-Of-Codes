@@ -11,7 +11,7 @@ bool         i2c_initialized = 0;
 i2c_status_t pca9555_status = 0x0; // using the same status for both since if one isn't working, odds are the other isn't as well
 
 void matrix_init_kb(void) {
-    wait_ms(3000);
+    wait_ms(1000);
     print("initing please work\n");
     pca9555_status = init_pca9555();
     matrix_init_user();
@@ -25,7 +25,7 @@ i2c_status_t init_pca9555(void) {
     if (i2c_initialized == 0) {
         i2c_init();  // on pins GP6&7
         i2c_initialized = true;
-        wait_ms(1000);
+        wait_ms(500);
     }
 
     print("initing i/o expanders\n");

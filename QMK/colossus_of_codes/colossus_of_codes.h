@@ -6,8 +6,8 @@
 #include "i2c_master.h"
 
 // I2C aliases and register addresses for PCA9555
-#define I2C0_ADDR        0b01000010 // schematic U2 = I2C0 (it just needs that extra 0 on the end)
-#define I2C1_ADDR        0b01000100 // schematic U3 = I2C1
+#define I2C0_ADDR       0b01000010 // schematic U2 = I2C0 (it just needs that extra 0 on the end)
+#define I2C1_ADDR       0b01000100 // schematic U3 = I2C1
 #define IODIRA          0x06            // i/o direction register
 #define IODIRB          0x07
 #define OUTPUTA         0x02            // register to set the value of output pins

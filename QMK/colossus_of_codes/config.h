@@ -26,6 +26,7 @@
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 22
 
-#define DEBUG_MATRIX_SCAN_RATE
+//#define DEBUG_MATRIX_SCAN_RATE
+
 
 

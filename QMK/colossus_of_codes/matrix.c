@@ -38,6 +38,12 @@ void matrix_init_user(void) {
         // wait_ms(50);
         better_matrix[i] = 0;
     }
+
+    for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
+        // uprintf("filling: %d\n", i);
+        // wait_ms(50);
+        raw_matrix[i] = 0;
+    }
     // wait_ms(50);
     // uprintf("cols: %d  rows: %d\n", MATRIX_COLS, MATRIX_ROWS);
     // wait_ms(50);
@@ -61,11 +67,11 @@ static inline bool store_raw_matrix_row(uint8_t index) {
         // wait_ms(50);
         better_matrix[index] = temp;
         for (int i = 0; i < MATRIX_ROWS; i++) {
-            matrix[i] &= ~(1 << index);
-            matrix[i] |= (temp & (1 << i)) ? (1 << index) : 0;
+            raw_matrix[i] &= ~(1 << index);
+            raw_matrix[i] |= (temp & (1 << i)) ? (1 << index) : 0;
         }
-        // print("insert anmial2 here\n");
-        // wait_ms(50);
+        //print("insert anmial2 here\n");
+        //wait_ms(50);
         return true;
     }
     return false;
@@ -101,7 +107,7 @@ bool matrix_scan_custom(matrix_row_t current_matrix[]) {
         // wait_ms(50);
     }
     // uprintf("changed: %d\n", changed);
-
+    // wait_ms(50);
     // changed = true;
     //  print("scan done\n");
     //  print("scan done\n");
