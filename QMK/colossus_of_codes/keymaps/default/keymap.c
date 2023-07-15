@@ -20,6 +20,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_P0, KC_PDOT,                           KC_LCTL, KC_LGUI, KC_LALT, KC_SPC, KC_RALT, KC_NO, KC_APPLICATION, KC_RCTL, KC_LEFT, KC_DOWN, KC_RIGHT
 )
 };
+
+#if defined(ENCODER_MAP_ENABLE)
+const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
+    [BASE] =   { ENCODER_CCW_CW(KC_KB_VOLUME_UP, KC_KB_VOLUME_DOWN)  },
+};
+#endif
 // clang-format on
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

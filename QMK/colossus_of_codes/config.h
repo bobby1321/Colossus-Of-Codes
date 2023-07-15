@@ -26,6 +26,11 @@
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 22
 
+#define ENCODERS_PAD_A { GP3 } // these are reveresed to reverse the direction of the encoder
+#define ENCODERS_PAD_B { GP4 }
+
+#define ENCODER_RESOLUTION 2
+
 //#define DEBUG_MATRIX_SCAN_RATE
 
 
