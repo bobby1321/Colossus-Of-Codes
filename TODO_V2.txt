@@ -1,0 +1,7 @@
+Things to do in V2:
+	- Try to reduce dead area on board (talking about you top left corner)
+	- Bigger resistors on LEDs (they are too bright)
+	- Silkscreen things
+	- Maybe design the case before / at the same time as the board so holes don't end up under keys :)
+	- Also just put more holes in general
+	- Try to put the chips on the front?
