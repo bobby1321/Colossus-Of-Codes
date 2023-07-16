@@ -5,3 +5,6 @@ Things to do in V2:
 	- Maybe design the case before / at the same time as the board so holes don't end up under keys :)
 	- Also just put more holes in general
 	- Try to put the chips on the front?
+	- Maybe get chips with pull-down inputs, or just add pull-down resistors since I already have extra chips...
+	- MEGA GAM3R RGB (per key, or just backlight?)
+	- Thermal relief thingys? Make them better so that it doens't suck soldering to the ground plane.
