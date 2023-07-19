@@ -8,3 +8,7 @@ Things to do in V2:
 	- Maybe get chips with pull-down inputs, or just add pull-down resistors since I already have extra chips...
 	- MEGA GAM3R RGB (per key, or just backlight?)
 	- Thermal relief thingys? Make them better so that it doens't suck soldering to the ground plane.
+	- Make the top 2 rows angled cause that would be cool
+	- Toggle switches?
+	- OLED screen...? maybe that's excessive...
+	- Layer indicator LEDs
