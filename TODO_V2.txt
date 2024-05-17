@@ -12,3 +12,7 @@ Things to do in V2:
 	- Toggle switches?
 	- OLED screen...? maybe that's excessive...
 	- Layer indicator LEDs
+	- Increase kerf (that's a thing, right?) on top plate DXF
+	- Also apparently construction lines get transfered to DXFs :)
+	- Move function keys/esc closer to the number row
+	- Move lock lights so that they are actually visible
