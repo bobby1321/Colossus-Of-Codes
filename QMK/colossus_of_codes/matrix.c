@@ -47,7 +47,7 @@ void matrix_init_user(void) {
     // wait_ms(50);
     // uprintf("cols: %d  rows: %d\n", MATRIX_COLS, MATRIX_ROWS);
     // wait_ms(50);
-    pca9555_status = init_pca9555();
+    // pca9555_status = init_pca9555();
 }
 
 // Reads and stores a row, returning
@@ -141,8 +141,8 @@ static matrix_row_t read_rows() {
         uint8_t data   = 0;
         pca9555_status = i2c_readReg(I2C1_ADDR, INPUTB, &data, 1, PCA_I2C_TIMEOUT);
         if (pca9555_status < 0) goto out;
-        // uprintf("Row says: %d\n", data);
-        // wait_ms(10);
+        // uprintf("Row says: %X\n", data);
+        // wait_ms(500);
     out:
         i2c_stop();
         return data;

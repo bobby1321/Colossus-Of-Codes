@@ -16,3 +16,6 @@ Things to do in V2:
 	- Also apparently construction lines get transfered to DXFs :)
 	- Move function keys/esc closer to the number row
 	- Move lock lights so that they are actually visible
+	- Figure out how to support the volume roller better
+	- Use thinner stainless steel
+	- Print bottom plates stronger
